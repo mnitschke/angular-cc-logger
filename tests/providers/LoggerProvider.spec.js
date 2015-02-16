@@ -22,11 +22,13 @@ describe('Unit: LoggerProvider', function () {
         var level = 10;
         var message = "test";
 
+        // don't know how to call this neither   |  error expected
         var handler = new Handler;
 
         handler.setHandler(message, level);
 
-        expect(handler.getHandler().toBe({"level":10,"message":"test"}));
+        expect(handler.message.toBe("test"));
+        expect(handler.level.toBe(10));
 
         loggerProvider.pushHandler(handler);
 

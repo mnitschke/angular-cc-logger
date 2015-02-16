@@ -6,20 +6,7 @@
         this.message = 'Message';
         this.level = 5;
 
-        this.getHandler = getHandler;
         this.setHandler = setHandler;
-
-        /**
-         * Get handler
-         * @returns {{message: *, level: (*|number)}}
-         */
-        function getHandler(){
-            return {
-                "message": $this.message,
-                "level": $this.level
-            };
-        }
-
 
         /**
          * Set handler
