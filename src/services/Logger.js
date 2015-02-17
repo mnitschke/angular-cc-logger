@@ -27,25 +27,28 @@
 
         function error(message) {
             logger.call($this, $this.ERROR_LEVEL, message);
+            console.error(message);
         }
 
         function warning(message) {
             logger.call($this, $this.WARN_LEVEL, message);
+            console.warn(message);
         }
 
         function notice(message) {
             logger.call($this, $this.NOTICE_LEVEL, message);
+            console.log(message);
         }
 
         function info(message) {
             logger.call($this, $this.INFO_LEVEL, message);
+            console.info(message);
         }
 
         function logger(level, message) {
             if (!this.configProvider.debug) {
                 return;
             }
-
 
             for (var handler in this.configProvider.handlers) {
                 $this.configProvider.handlers[handler](level, message);

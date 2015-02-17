@@ -22,7 +22,7 @@
         /**
          * Function to insert new handler.
          *
-         * @param {Function} level
+         * @param {Function} func
          */
         function pushHandler(func){
             $this.handlers.push(func);
@@ -31,8 +31,6 @@
         this.$get = function $get() {
             return $this;
         }
-
-
     }
 
     angular

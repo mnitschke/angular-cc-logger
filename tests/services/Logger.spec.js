@@ -1,12 +1,13 @@
 describe('Unit: Logger', function () {
     beforeEach(module('angular-cc-logger'));
 
-    /**
-     *  @type {Logger}
-     */
-    var logger;
+    var logger,
+        provider,
+        test;
 
-    var provider;
+    test = function(level, message){
+        console.log('Level: '+level+'; Message: '+message+';');
+    };
 
     beforeEach(inject(['angular-cc-logger.$logger', '$log', function ($provider, $log) {
         provider = $provider;
@@ -19,22 +20,17 @@ describe('Unit: Logger', function () {
 
 
     function shouldBeDefined(){
-        expect(logger.ERROR_LEVEL).toBe(250);
+        expect(logger).toBeDefined();
     }
 
     function shouldCallLogger(){
-        logger.error('some_error');
+        logger.error('test');
     }
 
     function shouldCallLoggerWithHandler(){
-        var test = function(level, message){
-            console.log(level+' funny '+message+' cats');
-        };
-
         provider.pushHandler(test);
 
-        logger.warn('some_warn');
+        logger.warn('test');
     }
-
 });
 
