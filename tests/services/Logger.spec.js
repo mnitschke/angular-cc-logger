@@ -8,17 +8,18 @@ describe('Unit: Logger', function () {
 
     var provider;
 
-    beforeEach(inject(['angular-cc-logger.Logger', 'angular-cc-logger.$logger', function (Logger, $provider) {
-        logger = Logger;
+    beforeEach(inject(['angular-cc-logger.$logger', '$log', function ($provider, $log) {
         provider = $provider;
+        logger = $log;
     }]));
 
     it('should be defined', shouldBeDefined);
     it('should run old logger function', shouldCallLogger);
     it('should call logger with handler', shouldCallLoggerWithHandler);
 
-    function shouldBeDefined() {
-        expect(logger).toBeDefined();
+
+    function shouldBeDefined(){
+        expect(logger.ERROR_LEVEL).toBe(250);
     }
 
     function shouldCallLogger(){
@@ -26,14 +27,11 @@ describe('Unit: Logger', function () {
     }
 
     function shouldCallLoggerWithHandler(){
-        var level = 250;
-        var message = "test";
-
         var test = function(level, message){
             console.log(level+' funny '+message+' cats');
         };
 
-        provider.pushHandler(test(level,message));
+        provider.pushHandler(test);
 
         logger.warn('some_warn');
     }

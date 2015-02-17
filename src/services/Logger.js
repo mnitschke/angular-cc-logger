@@ -46,17 +46,19 @@
                 return;
             }
 
+
             for (var handler in this.configProvider.handlers) {
                 $this.configProvider.handlers[handler](level, message);
             }
         }
     }
 
-    Logger.$inject = [
-        MODULE_NAME + '.$logger'
-    ];
-
     ng
         .module(MODULE_NAME)
-        .service(MODULE_NAME +'.Logger', Logger);
+        .factory('$log',[
+            MODULE_NAME + '.$logger',
+            function(provider){
+                return new Logger(provider);
+            }
+        ]);
 }(angular));

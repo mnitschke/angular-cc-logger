@@ -14,7 +14,7 @@
     function LoggerProvider(){
         var $this = this;
 
-        this.debug = false;
+        this.debug = true;
         this.handlers = [];
 
         this.pushHandler = pushHandler;
