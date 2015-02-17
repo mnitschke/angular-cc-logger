@@ -10,27 +10,23 @@ describe('Unit: LoggerProvider', function () {
     }]));
 
     it('should be defined', shouldBeDefined);
-    //it('should push handler into array', shouldPushHandlerIntoArray);
+    it('should push handler into array', shouldPushHandlerIntoArray);
 
     function shouldBeDefined() {
         expect(loggerProvider).toBeDefined();
     }
 
 
-    //function shouldPushHandlerIntoArray() {
-    //    var level = 10;
-    //    var message = "test";
-    //
-    //    // don't know how to call this neither   |  error expected
-    //    var handler = new Handler;
-    //
-    //    //handler.setHandler(message, level);
-    //
-    //    expect(handler.message.toBe("test"));
-    //    expect(handler.level.toBe(10));
-    //
-    //    //loggerProvider.pushHandler(handler);
-    //
-    //    expect(loggerProvider.handlers.length).toBe(1);
-    //}
+    function shouldPushHandlerIntoArray() {
+        var level = 10;
+        var message = "test";
+
+
+        loggerProvider.pushHandler(level, message);
+
+        expect(loggerProvider.handlers.length).toBe(1);
+        expect(loggerProvider.handlers[loggerProvider.handlers.length-1].level).toBe(10);
+        expect(loggerProvider.handlers[loggerProvider.handlers.length-1].message).toBe("test");
+    }
 });
+

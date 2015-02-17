@@ -22,10 +22,14 @@
         /**
          * Function to insert new handler.
          *
-         * @param {Handler} hander
+         * @param {Number} level
+         * @param {String} message
          */
-        function pushHandler(handler){
-            $this.handers.push(handler);
+        function pushHandler(level, message){
+            $this.handlers.push({
+                "level": level,
+                "message": message
+            });
         }
 
         this.$get = function $get() {
