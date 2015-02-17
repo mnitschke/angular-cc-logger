@@ -18,4 +18,4 @@
             $this.level = level;
         }
     }
-});
+}());
