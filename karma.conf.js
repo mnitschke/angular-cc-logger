@@ -17,6 +17,11 @@ module.exports = function(config) {
     files: [
         'node_modules/angular/angular.js',
         'node_modules/angular-mocks/angular-mocks.js',
+        'src/logger.js',
+        //'src/providers/LoggerProvider.js',
+        //'tests/providers/LoggerProvider.spec.js',
+        //'src/decorators/LogDecorator.js',
+        //'tests/decorators/LogDecorator.spec.js',
         'src/**/*.js',
         'tests/**/*.spec.js'
     ],

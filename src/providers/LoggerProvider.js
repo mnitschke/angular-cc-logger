@@ -22,19 +22,16 @@
         /**
          * Function to insert new handler.
          *
-         * @param {Number} level
-         * @param {String} message
+         * @param {Function} level
          */
-        function pushHandler(level, message){
-            $this.handlers.push({
-                "level": level,
-                "message": message
-            });
+        function pushHandler(func){
+            $this.handlers.push(func);
         }
 
         this.$get = function $get() {
             return $this;
         }
+
 
     }
 

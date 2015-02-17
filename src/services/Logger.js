@@ -3,22 +3,39 @@
 
     var MODULE_NAME = 'angular-cc-logger';
 
-    function Logger($provider, $log){
+
+    /**
+     * ng-service to handle bugs and other notifications from browser
+     *
+     * @param {LoggerProvider} $provider
+     * @constructor
+     */
+    function Logger($provider){
         var $this = this;
 
-        this.configProvider = $provider;
-        this.$log = $log;
+        this.ERROR_LEVEL = 250;
+        this.WARN_LEVEL = 251;
+        this.NOTICE_LEVEL = 252;
+        this.INFO_LEVEL = 253;
 
-        /**
-         * @readonly
-         * @type {number}
-         */
-        this.INFO_LEVEL = 250;
+        this.configProvider = $provider;
 
         this.error = error;
-        this.warning = warning;
-        this.notice = notice;
+        this.warn = warning;
+        this.log = notice;
         this.info = info;
+
+        function error(message) {
+            logger.call($this, $this.ERROR_LEVEL, message);
+        }
+
+        function warning(message) {
+            logger.call($this, $this.WARN_LEVEL, message);
+        }
+
+        function notice(message) {
+            logger.call($this, $this.NOTICE_LEVEL, message);
+        }
 
         function info(message) {
             logger.call($this, $this.INFO_LEVEL, message);
@@ -32,17 +49,14 @@
             for (var handler in this.configProvider.handlers) {
                 $this.configProvider.handlers[handler](level, message);
             }
-
-
         }
     }
 
     Logger.$inject = [
-        MODULE_NAME + '.$logger',
-        '$log'
+        MODULE_NAME + '.$logger'
     ];
 
     ng
         .module(MODULE_NAME)
-        .service(MODULE_NAME + '.logger', Logger);
+        .service(MODULE_NAME +'.Logger', Logger);
 }(angular));

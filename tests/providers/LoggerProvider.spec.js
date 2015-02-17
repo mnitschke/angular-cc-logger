@@ -21,12 +21,13 @@ describe('Unit: LoggerProvider', function () {
         var level = 10;
         var message = "test";
 
+        var test = function(level, message){
+            console.log('funny cats');
+        };
 
-        loggerProvider.pushHandler(level, message);
+        loggerProvider.pushHandler(test(level,message));
 
         expect(loggerProvider.handlers.length).toBe(1);
-        expect(loggerProvider.handlers[loggerProvider.handlers.length-1].level).toBe(10);
-        expect(loggerProvider.handlers[loggerProvider.handlers.length-1].message).toBe("test");
     }
 });
 
