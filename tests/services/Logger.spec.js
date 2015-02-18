@@ -1,36 +1,64 @@
 describe('Unit: Logger', function () {
     beforeEach(module('angular-cc-logger'));
 
-    var logger,
-        provider,
-        test;
+    var loggerService,
+        loggerProvider;
 
-    test = function(level, message){
-        console.log('Level: '+level+'; Message: '+message+';');
+    var test_1 = function(level, message){
+        console.log(level+': '+message);
     };
 
-    beforeEach(inject(['angular-cc-logger.$logger', '$log', function ($provider, $log) {
-        provider = $provider;
-        logger = $log;
+    var test_2 = function(level, message){
+        console.error(message+', '+message);
+    };
+
+    var test_3 = 5;
+
+    beforeEach(inject(['angular-cc-logger.Logger', 'angular-cc-logger.$logger', function (Logger, provider) {
+        loggerService = Logger;
+        loggerProvider = provider;
     }]));
 
     it('should be defined', shouldBeDefined);
-    it('should run old logger function', shouldCallLogger);
-    it('should call logger with handler', shouldCallLoggerWithHandler);
-
 
     function shouldBeDefined(){
-        expect(logger).toBeDefined();
+        expect(loggerService).toBeDefined();
+        expect(loggerProvider).toBeDefined();
     }
 
-    function shouldCallLogger(){
-        logger.error('test');
-    }
+    describe('testing each of Logger function', function(){
+        beforeEach(function () {
+            loggerProvider.pushHandler(test_1);
+            loggerProvider.pushHandler(test_2);
+        });
 
-    function shouldCallLoggerWithHandler(){
-        provider.pushHandler(test);
+        it('should be defined (handler)', shouldBeDefinedHandler);
+        it('should run logger error', shouldRunLoggerError);
+        it('should run logger warning', shouldRunLoggerWarn);
+        it('should run logger notice', shouldRunLoggerNotice);
+        it('should run logger info', shouldRunLoggerInfo);
 
-        logger.warn('test');
-    }
+        function shouldBeDefinedHandler(){
+            for(var i in loggerProvider.handlers){
+                expect(loggerProvider.handlers[i]).toBeDefined();
+                expect(angular.isFunction(loggerProvider.handlers[i])).toBe(true);
+            }
+        }
+
+        function shouldRunLoggerError(){
+            loggerService.error('error');
+        }
+
+        function shouldRunLoggerWarn(){
+            loggerService.warn('warn');
+        }
+
+        function shouldRunLoggerNotice(){
+            loggerService.notice('notice');
+        }
+
+        function shouldRunLoggerInfo(){
+            loggerService.info('info');
+        }
+    });
 });
-

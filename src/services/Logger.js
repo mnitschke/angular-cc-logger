@@ -10,7 +10,7 @@
      * @param {LoggerProvider} $provider
      * @constructor
      */
-    function Logger($provider){
+    function Logger($provider, $log){
         var $this = this;
 
         this.ERROR_LEVEL = 250;
@@ -22,30 +22,30 @@
 
         this.error = error;
         this.warn = warning;
-        this.log = notice;
+        this.notice = notice;
         this.info = info;
 
         function error(message) {
-            logger.call($this, $this.ERROR_LEVEL, message);
-            console.error(message);
+            log.call($this, $this.ERROR_LEVEL, message);
+            $log.error(message);
         }
 
         function warning(message) {
-            logger.call($this, $this.WARN_LEVEL, message);
-            console.warn(message);
+            log.call($this, $this.WARN_LEVEL, message);
+            $log.warn(message);
         }
 
         function notice(message) {
-            logger.call($this, $this.NOTICE_LEVEL, message);
-            console.log(message);
+            log.call($this, $this.NOTICE_LEVEL, message);
+            $log.log(message);
         }
 
         function info(message) {
-            logger.call($this, $this.INFO_LEVEL, message);
-            console.info(message);
+            log.call($this, $this.INFO_LEVEL, message);
+            $log.info(message);
         }
 
-        function logger(level, message) {
+        function log(level, message) {
             if (!this.configProvider.debug) {
                 return;
             }
@@ -56,12 +56,12 @@
         }
     }
 
+    Logger.$inject = [
+        MODULE_NAME + '.$logger',
+        '$log'
+    ];
+
     ng
         .module(MODULE_NAME)
-        .factory('$log',[
-            MODULE_NAME + '.$logger',
-            function(provider){
-                return new Logger(provider);
-            }
-        ]);
+        .service(MODULE_NAME+'.Logger', Logger);
 }(angular));

@@ -25,7 +25,9 @@
          * @param {Function} func
          */
         function pushHandler(func){
-            $this.handlers.push(func);
+            if(angular.isFunction(func)){
+                $this.handlers.push(func);
+            }
         }
 
         this.$get = function $get() {

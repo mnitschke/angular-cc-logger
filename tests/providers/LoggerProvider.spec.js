@@ -2,12 +2,14 @@ describe('Unit: LoggerProvider', function () {
     beforeEach(module('angular-cc-logger'));
 
     var loggerProvider,
-        log,
-        test;
+        test_1,
+        test_2;
 
-    test = function(level, message){
+    test_1 = function(level, message){
         console.log(level+' funny '+message+' cats');
     };
+
+    test_2 = 5;
 
     beforeEach(inject(['angular-cc-logger.$logger', function (LoggerProvider) {
         loggerProvider = LoggerProvider;
@@ -16,13 +18,21 @@ describe('Unit: LoggerProvider', function () {
 
     it('should be defined', shouldBeDefined);
     it('should push handler into array', shouldPushHandlerIntoArray);
+    it('should add only functions', shouldAddOnlyFunctions);
 
     function shouldBeDefined() {
         expect(loggerProvider).toBeDefined();
     }
 
     function shouldPushHandlerIntoArray() {
-        loggerProvider.pushHandler(test);
+        loggerProvider.pushHandler(test_1);
+        expect(loggerProvider.handlers.length).toBe(1);
+    }
+
+    function shouldAddOnlyFunctions(){
+        loggerProvider.pushHandler(test_1);
+        loggerProvider.pushHandler(test_2);
+
         expect(loggerProvider.handlers.length).toBe(1);
     }
 });
