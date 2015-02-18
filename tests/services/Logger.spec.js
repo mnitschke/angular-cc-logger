@@ -1,8 +1,27 @@
 describe('Unit: Logger', function () {
-    beforeEach(module('angular-cc-logger'));
-
     var loggerService,
-        loggerProvider;
+        loggerProvider,
+        $log;
+
+    beforeEach(module('angular-cc-logger'),function($provide) {
+        //loggerServiceMocked = {};
+        //
+        //loggerServiceMocked.error = function (message) {
+        //    var indicator = 0;
+        //    if (!loggerProvider.debug) {
+        //        return;
+        //    }
+        //
+        //    for (var handler in loggerProvider.handlers) {
+        //        loggerProvider.handlers[handler](250, message);
+        //        indicator++;
+        //    }
+        //    $log.error(message);
+        //    return indicator;
+        //};
+        //
+        //$provide.value('angular-cc-logger.Logger.error', loggerServiceMocked.error);
+    });
 
     /**
      * First mocked handler
@@ -12,7 +31,7 @@ describe('Unit: Logger', function () {
      */
 
     var test_1 = function(level, message){
-        console.log(level+': '+message);
+        console.log('Created to check if test_1 runs properly');
     };
 
     /**
@@ -23,16 +42,17 @@ describe('Unit: Logger', function () {
      */
 
     var test_2 = function(level, message){
-        console.error(message+', '+message);
+        console.info('Created to check if test_2 runs properly');
     };
 
     /**
      * Injecting and creating mocked service and provider objects
      */
 
-    beforeEach(inject(['angular-cc-logger.Logger', 'angular-cc-logger.$logger', function (Logger, provider) {
+    beforeEach(inject(['angular-cc-logger.Logger', 'angular-cc-logger.$logger', '$log', function (Logger, provider, log) {
         loggerService = Logger;
         loggerProvider = provider;
+        $log = log;
     }]));
 
     /**
@@ -57,11 +77,20 @@ describe('Unit: Logger', function () {
     describe('testing each of Logger function', function(){
 
         /**
-         * Filling handlers table with two mocked functions
+         * Filling handlers table with two mocked functions and start to spy on $log functions
          */
         beforeEach(function () {
             loggerProvider.pushHandler(test_1);
             loggerProvider.pushHandler(test_2);
+
+            spyOn($log, 'error');
+            spyOn($log, 'warn');
+            spyOn($log, 'log');
+            spyOn($log, 'info');
+
+            spyOn(console, 'log');
+            spyOn(console, 'info');
+
         });
 
         /**
@@ -88,6 +117,13 @@ describe('Unit: Logger', function () {
          */
         function shouldRunLoggerError(){
             loggerService.error('error');
+            expect($log.error).toHaveBeenCalled();
+            expect($log.warn).not.toHaveBeenCalled();
+            expect($log.log).not.toHaveBeenCalled();
+            expect($log.info).not.toHaveBeenCalled();
+
+            expect(console.log).toHaveBeenCalled();
+            expect(console.info).toHaveBeenCalled();
         }
 
         /**
@@ -95,6 +131,13 @@ describe('Unit: Logger', function () {
          */
         function shouldRunLoggerWarn(){
             loggerService.warn('warn');
+            expect($log.error).not.toHaveBeenCalled();
+            expect($log.warn).toHaveBeenCalled();
+            expect($log.log).not.toHaveBeenCalled();
+            expect($log.info).not.toHaveBeenCalled();
+
+            expect(console.log).toHaveBeenCalled();
+            expect(console.info).toHaveBeenCalled();
         }
 
         /**
@@ -102,6 +145,13 @@ describe('Unit: Logger', function () {
          */
         function shouldRunLoggerNotice(){
             loggerService.notice('notice');
+            expect($log.error).not.toHaveBeenCalled();
+            expect($log.warn).not.toHaveBeenCalled();
+            expect($log.log).toHaveBeenCalled();
+            expect($log.info).not.toHaveBeenCalled();
+
+            expect(console.log).toHaveBeenCalled();
+            expect(console.info).toHaveBeenCalled();
         }
 
         /**
@@ -109,6 +159,13 @@ describe('Unit: Logger', function () {
          */
         function shouldRunLoggerInfo(){
             loggerService.info('info');
+            expect($log.error).not.toHaveBeenCalled();
+            expect($log.warn).not.toHaveBeenCalled();
+            expect($log.log).not.toHaveBeenCalled();
+            expect($log.info).toHaveBeenCalled();
+
+            expect(console.log).toHaveBeenCalled();
+            expect(console.info).toHaveBeenCalled();
         }
     });
 });
