@@ -1,21 +1,21 @@
 {
-  "name": "ccLogger",
+  "name": "angular-cc-logger",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "angular-cc-logger.js",
   "scripts": {
     "test": "karma test"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mnitschke/ccLogger.git"
+    "url": "https://github.com/mnitschke/angular-cc-logger.git"
   },
   "author": "Marcin Nitschke <m.nitschke@clearcode.cc>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mnitschke/ccLogger/issues"
+    "url": "https://github.com/mnitschke/angular-cc-logger/issues"
   },
-  "homepage": "https://github.com/mnitschke/ccLogger",
+  "homepage": "https://github.com/mnitschke/angular-cc-logger",
   "devDependencies": {
     "angular-mocks": "^1.3.13",
     "gulp": "^3.8.11",
