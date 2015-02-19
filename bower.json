@@ -1,9 +1,12 @@
 {
   "name": "angular-cc-logger",
   "version": "1.0.0",
-  "main": "path/to/main.css",
+  "author": "Marcin Nitschke",
+  "main": "dist/angular-cc-logger.js",
+  "homepage": "https://github.com/mnitschke/angular-cc-logger",
   "ignore": [
     ".jshintrc",
+    ".gitignore",
     "**/*.txt"
   ],
   "dependencies": {
