@@ -18,6 +18,7 @@ describe('Unit: LoggerProvider', function () {
 
     it('should be defined', shouldBeDefined);
     it('should push handler into array', shouldPushHandlerIntoArray);
+    it('should be defined (handler)', shouldBeDefinedHandler);
     it('should add only functions', shouldAddOnlyFunctions);
 
     function shouldBeDefined() {
@@ -27,6 +28,16 @@ describe('Unit: LoggerProvider', function () {
     function shouldPushHandlerIntoArray() {
         loggerProvider.pushHandler(test_1);
         expect(loggerProvider.handlers.length).toBe(1);
+    }
+
+    /**
+     * Checking if handlers are defined and if are functions
+     */
+    function shouldBeDefinedHandler(){
+        for(var i in loggerProvider.handlers){
+            expect(loggerProvider.handlers[i]).toBeDefined();
+            expect(angular.isFunction(loggerProvider.handlers[i])).toBe(true);
+        }
     }
 
     function shouldAddOnlyFunctions(){

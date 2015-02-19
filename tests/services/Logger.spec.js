@@ -71,29 +71,17 @@ describe('Unit: Logger', function () {
         /**
          * Tests
          */
-        it('should be defined (handler)', shouldBeDefinedHandler);
         it('should run logger with disabled debugger', shouldRunLoggerWithDisabledDebugger);
         it('should run logger error', shouldRunLoggerError);
         it('should run logger warning', shouldRunLoggerWarn);
         it('should run logger notice', shouldRunLoggerNotice);
         it('should run logger info', shouldRunLoggerInfo);
 
-        /**
-         * Checking if handlers are defined and if are functions
-         */
-        function shouldBeDefinedHandler(){
-            for(var i in loggerProvider.handlers){
-                expect(loggerProvider.handlers[i]).toBeDefined();
-                expect(angular.isFunction(loggerProvider.handlers[i])).toBe(true);
-            }
-        }
-
         function shouldRunLoggerWithDisabledDebugger(){
             loggerProvider.debug = false;
 
             loggerService.error('error');
             expect(console.log).not.toHaveBeenCalled();
-
         }
 
         /**

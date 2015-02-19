@@ -1,7 +1,8 @@
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
-    karma = require('gulp-karma');
+    karma = require('gulp-karma'),
+    bower = require('bower');
 
 var testFiles = [
     './node_modules/angular/angular.js',
@@ -9,7 +10,6 @@ var testFiles = [
     './src/**/*.js',
     './tests/**/*.js'
 ];
-
 
 gulp.task('scripts', function() {
     return gulp.src('./src/**/*.js')

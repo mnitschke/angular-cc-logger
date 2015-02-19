@@ -7,14 +7,17 @@
   "ignore": [
     ".jshintrc",
     ".gitignore",
-    "**/*.txt"
+    "**/*.txt",
+    "./tests",
+    "src",
+    "node_modules",
+    "gulpfile.js",
+    "karma.conf.js"
   ],
   "dependencies": {
-    "<name>": "<version>",
-    "<name>": "<folder>",
-    "<name>": "<package>"
+    "angular": "1.3.13"
   },
   "devDependencies": {
-    "<test-framework-name>": "<version>"
+    "angular-mocks": "1.3.13"
   }
 }
