@@ -8,7 +8,7 @@
     ".jshintrc",
     ".gitignore",
     "**/*.txt",
-    "./tests",
+    "tests",
     "src",
     "node_modules",
     "gulpfile.js",
