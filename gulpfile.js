@@ -1,8 +1,8 @@
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
-    karma = require('gulp-karma'),
-    bower = require('bower');
+    karma = require('gulp-karma');
+
 
 var testFiles = [
     './node_modules/angular/angular.js',
