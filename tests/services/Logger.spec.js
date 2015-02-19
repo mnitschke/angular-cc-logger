@@ -102,9 +102,6 @@ describe('Unit: Logger', function () {
         function shouldRunLoggerError(){
             loggerService.error('error');
             expect($log.error).toHaveBeenCalled();
-            expect($log.warn).not.toHaveBeenCalled();
-            expect($log.log).not.toHaveBeenCalled();
-            expect($log.info).not.toHaveBeenCalled();
 
             expect(console.log).toHaveBeenCalled();
             expect(console.info).toHaveBeenCalled();
@@ -115,10 +112,7 @@ describe('Unit: Logger', function () {
          */
         function shouldRunLoggerWarn(){
             loggerService.warn('warn');
-            expect($log.error).not.toHaveBeenCalled();
             expect($log.warn).toHaveBeenCalled();
-            expect($log.log).not.toHaveBeenCalled();
-            expect($log.info).not.toHaveBeenCalled();
 
             expect(console.log).toHaveBeenCalled();
             expect(console.info).toHaveBeenCalled();
@@ -129,10 +123,7 @@ describe('Unit: Logger', function () {
          */
         function shouldRunLoggerNotice(){
             loggerService.notice('notice');
-            expect($log.error).not.toHaveBeenCalled();
-            expect($log.warn).not.toHaveBeenCalled();
             expect($log.log).toHaveBeenCalled();
-            expect($log.info).not.toHaveBeenCalled();
 
             expect(console.log).toHaveBeenCalled();
             expect(console.info).toHaveBeenCalled();
@@ -143,9 +134,6 @@ describe('Unit: Logger', function () {
          */
         function shouldRunLoggerInfo(){
             loggerService.info('info');
-            expect($log.error).not.toHaveBeenCalled();
-            expect($log.warn).not.toHaveBeenCalled();
-            expect($log.log).not.toHaveBeenCalled();
             expect($log.info).toHaveBeenCalled();
 
             expect(console.log).toHaveBeenCalled();
