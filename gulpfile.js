@@ -15,7 +15,7 @@ gulp.task('scripts', function() {
     return gulp.src('./src/**/*.js')
         .pipe(concat('angular-cc-logger.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./dist/'));
+        .pipe(gulp.dest('./'));
 });
 
 gulp.task('test', function(){
