@@ -1,6 +1,17 @@
 {
-  "name": "ccLogger",
+  "name": "angular-cc-logger",
   "version": "1.0.0",
-  "main": "app/index.html",
-  "license": "MIT"
+  "main": "path/to/main.css",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "<name>": "<version>",
+    "<name>": "<folder>",
+    "<name>": "<package>"
+  },
+  "devDependencies": {
+    "<test-framework-name>": "<version>"
+  }
 }
