@@ -1,9 +1,10 @@
 describe('Unit: Logger', function () {
     var loggerService,
         loggerProvider,
-        $log;
+        $log,
+        MODULE_NAME = 'angular-cc-logger';
 
-    beforeEach(module('angular-cc-logger'));
+    beforeEach(module(MODULE_NAME));
 
     /**
      * First mocked handler
@@ -44,7 +45,6 @@ describe('Unit: Logger', function () {
      */
     function shouldBeDefined(){
         expect(loggerService).toBeDefined();
-        expect(loggerProvider).toBeDefined();
     }
 
     /**
@@ -141,24 +141,3 @@ describe('Unit: Logger', function () {
         }
     });
 });
-
-
-//beforeEach(module('angular-cc-logger'),function($provide) {
-//    loggerServiceMocked = {};
-//
-//    loggerServiceMocked.error = function (message) {
-//        var indicator = 0;
-//        if (!loggerProvider.debug) {
-//            return;
-//        }
-//
-//        for (var handler in loggerProvider.handlers) {
-//            loggerProvider.handlers[handler](250, message);
-//            indicator++;
-//        }
-//        $log.error(message);
-//        return indicator;
-//    };
-//
-//    $provide.value('loggerService.error', loggerServiceMocked.error);
-//});
