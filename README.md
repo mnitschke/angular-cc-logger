@@ -1,4 +1,4 @@
-# anuglar-cc-logger [![Build Status](https://travis-ci.org/mnitschke/angular-cc-logger.svg?branch=master)](https://travis-ci.org/mnitschke/angular-cc-logger)
+# angular-cc-logger [![Build Status](https://travis-ci.org/mnitschke/angular-cc-logger.svg?branch=master)](https://travis-ci.org/mnitschke/angular-cc-logger)
 
 Basic decorator for angular.$log.
 
@@ -28,7 +28,7 @@ into your `index.html`.
 
 ###Injecting functions
 
-Logger can easilly inject javascript functions. Functions should have two arguments, just like the example one below.
+Logger can easily inject javascript functions. Functions should have two arguments, just like the example below.
 ```html
 <script>
   var test_function = function(level, message){
@@ -54,7 +54,7 @@ function AppConfig($loggerProvider){
 ```
 ###Stop calling handlers
 
-If you do not want to call your handlers anymore, you can easilly disable it by setting `debug` property on `false`.
+If you do not want to call your handlers anymore, you can easily disable them by setting `debug` property on `false`.
 ```js
 function AppConfig($loggerProvider){
   // ...
