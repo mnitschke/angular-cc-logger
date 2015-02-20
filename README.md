@@ -19,8 +19,7 @@ bower install angular-cc-logger
 
 and paste
 ```html
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-cc-logger/angular-cc-logger.js"></script>
+<script src="bower_components/angular-cc-logger/angular-cc-logger.min.js"></script>
 ```
 into your `index.html`.
 
