@@ -3,7 +3,6 @@
 
     var MODULE_NAME = 'angular-cc-logger';
 
-
     /**
      * ng-service to handle bugs and other notifications from browser
      *
