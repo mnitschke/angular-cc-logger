@@ -4,8 +4,8 @@ var gulp = require('gulp'),
     karma = require('gulp-karma');
 
 var testFiles = [
-    '/bower_components/angular/angular.js',
-    '/bower_components/angular-mocks/angular-mocks.js',
+    '/node_modules/angular/angular.js',
+    '/node_modules/angular-mocks/angular-mocks.js',
     '/src/**/*.js',
     '/tests/**/*.js'
 ];
