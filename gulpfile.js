@@ -4,10 +4,10 @@ var gulp = require('gulp'),
     karma = require('gulp-karma');
 
 var testFiles = [
-    './node_modules/angular/angular.js',
-    './node_modules/angular-mocks/angular-mocks.js',
-    './src/**/*.js',
-    './tests/**/*.js'
+    '/node_modules/angular/angular.js',
+    '/node_modules/angular-mocks/angular-mocks.js',
+    '/src/**/*.js',
+    '/tests/**/*.js'
 ];
 
 gulp.task('scripts:minified', function() {
