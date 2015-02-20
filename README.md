@@ -1,4 +1,5 @@
-# anuglar-cc-logger
+# anuglar-cc-logger 
+[![Build Status](https://travis-ci.org/mnitschke/angular-cc-logger.svg?branch=master)](https://travis-ci.org/mnitschke/angular-cc-logger)
 
 Basic decorator for angular.$log.
 
