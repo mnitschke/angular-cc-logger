@@ -11,10 +11,16 @@ var testFiles = [
     './tests/**/*.js'
 ];
 
+gulp.task('scripts:minified', function() {
+    return gulp.src('./src/**/*.js')
+        .pipe(concat('angular-cc-logger.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./'));
+});
+
 gulp.task('scripts', function() {
     return gulp.src('./src/**/*.js')
         .pipe(concat('angular-cc-logger.js'))
-        .pipe(uglify())
         .pipe(gulp.dest('./'));
 });
 
@@ -29,4 +35,4 @@ gulp.task('test', function(){
         });
 });
 
-gulp.task('build',  ['test', 'scripts']);
+gulp.task('build',  ['test', 'scripts', 'scripts:minified']);
