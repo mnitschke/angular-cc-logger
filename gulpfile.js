@@ -3,7 +3,6 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     karma = require('gulp-karma');
 
-
 var testFiles = [
     './node_modules/angular/angular.js',
     './node_modules/angular-mocks/angular-mocks.js',
