@@ -60,3 +60,6 @@ function AppConfig($loggerProvider){
   $loggerProvider.debug = false;
 }
 ```
+
+## License
+The MIT License
