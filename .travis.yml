@@ -8,7 +8,6 @@ node_js:
   - iojs
 
 before_script:
-  - "npm install -g bower gulp karma"
-  - "bower install"
+  - "npm install -g gulp karma"
 
 script: gulp build
